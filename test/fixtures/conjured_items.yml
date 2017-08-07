@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# for testing that quality decrements by 1 as sellin decreases
+# for testing that quality decrements by 2 as sellin decreases
 one:
   name: Regular Shield
   quality: 10
   sellin: 5
 
-# for testing that quality decrements by 2 once sellin decrements to 0
+# for testing that quality decrements by 4 once sellin decrements to 0
 two:
   name: New Item
   quality: 40

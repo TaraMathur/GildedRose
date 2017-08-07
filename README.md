@@ -45,4 +45,4 @@ I spent about 9 hours on this in total.  If I had tracked the inventory info in 
 
 With more time, I would:
 1. Figure out how to load the database seeds programmatically, so the user no longer needs to run $rails db:seed.
-2. Write unit tests.  I'd write Fixtures with different sets of quality/sell-in values, for each type of item, and write tests to run through each of them and check the output in order to test the update logic.
+2. Write unit tests.  I've created Fixtures (in test/fixtures) for each type of item, with different sets of quality/sell-in values to test the various parts of the update logic.  I just need to write the actual tests to run through each of them and check the output.
