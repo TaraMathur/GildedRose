@@ -3,5 +3,8 @@
 
 Item.delete_all
 
-# quality, sellin
-Brie.new(rand(0...50),rand(0...45)).save!
+Brie.new.save!
+SulfarusSword.new.save!
+BackstagePass.new.save!
+ConjuredShield.new.save!
+Item.new(name: "Regular Shield").save!

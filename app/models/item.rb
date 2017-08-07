@@ -1,4 +1,15 @@
 class Item < ApplicationRecord
+	after_initialize :setup
+
+  def setup
+  	if !self.quality
+  		if !self.name
+  			self.name = "Item"
+  		end
+  		self.quality = rand(1...50)
+  		self.sellin = rand(1...45)
+  	end
+  end
 
   def update_values
 	    if(self.sellin == 0)
@@ -7,10 +18,10 @@ class Item < ApplicationRecord
 	      self.quality = self.quality - 1
 	    end
 	    self.sellin = self.sellin - 1
-	    check_boundaries
+	    enforce_boundaries
   end
 
-def check_boundaries
+def enforce_boundaries
     if (self.quality < 0 )
       self.quality = 0
     end
@@ -24,4 +35,19 @@ def check_boundaries
     end
  end
 
+end
+
+class ConjuredItem < Item
+    def initialize(name)
+      super(name)
+    end
+    def update_values
+      if(self.sellin == 0)
+        self.quality = self.quality - 4
+      else
+        self.quality = self.quality - 2
+      end
+      self.sellin = self.sellin - 1
+      enforce_boundaries
+    end
 end
