@@ -6,5 +6,5 @@ Item.delete_all
 Brie.new.save!
 SulfarusSword.new.save!
 BackstagePass.new.save!
-ConjuredShield.new.save!
+ConjuredItem.new(name: "Conjured Shield").save!
 Item.new(name: "Regular Shield").save!

@@ -1,8 +1,7 @@
-class ConjuredShield < ConjuredItem
-    def initialize
-      super(name: "Conjured Shield")
+class ConjuredItem < Item
+    def initialize(name)
+      super(name)
     end
-
     def update_values
       if(self.sellin == 0)
         self.quality = self.quality - 4
