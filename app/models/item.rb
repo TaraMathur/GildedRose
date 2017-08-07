@@ -10,4 +10,18 @@ class Item < ApplicationRecord
 	    check_boundaries
   end
 
+def check_boundaries
+    if (self.quality < 0 )
+      self.quality = 0
+    end
+
+    if (self.quality > 50)
+      self.quality = 50
+    end
+
+    if (self.sellin < 0 )
+      self.sellin = 0
+    end
+ end
+
 end

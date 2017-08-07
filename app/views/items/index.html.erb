@@ -5,7 +5,16 @@
 		<th>Item</th>
 		<th>Sell-In</th>
 		<th>Quality</th>
-	<tr>
+	</tr>
+	<% if (@items) %>
+		<% @items.each do |item| %>
+			<tr>
+				<td><%= item.name %></td>
+				<td><%= item.sellin %></td>
+				<td><%= item.quality %></td>
+			</tr>
+		<%end%>
+	<% end %>
 
 </table>
 
