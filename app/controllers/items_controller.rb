@@ -5,6 +5,14 @@ class ItemsController < ApplicationController
 	end
 
 	def group_update
-		# some code here that updates each item in the table
+		@items = Item.all
+		if(@items)
+			@items.each do |item|
+				item.update_values
+				item.save!
+			end
+		end
+		redirect_to items_url
 	end
+
 end
