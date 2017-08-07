@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# for making sure quality doesn't increase past 50
+one:
+  name: Aged Brie
+  quality: 50
+  sellin: 5
+
+# for making sure quality is set to 0 when sellin is 0.  also checks to make sure sellin never decreases past 0.
+two:
+  name: Aged Brie
+  quality: 40
+  sellin: 0
+
+# for making sure quality increases as sellin decreases
+three:
+  name: Aged Brie
+  quality: 20
+  sellin: 5

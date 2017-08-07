@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  quality: 1
-  sellin: 1
+  name: Regular Shield
+  quality: 10
+  sellin: 5
 
 two:
-  name: MyString
-  quality: 1
-  sellin: 1
+  name: New Item
+  quality: 40
+  sellin: 0
