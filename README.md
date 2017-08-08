@@ -38,15 +38,17 @@ To refresh the page and get a fresh set of values, rerun $rake db:seed and then 
 
 HOW IT WORKS
 
-There's a class called Item that has four attributes: name, type, quality, and sell-in.
-Each Item's quality and sell-in attribute values are assigned random values after the Item is created.
-There's a subclass for each type of item that has special update rules.  (All classes are defined in files in the model folder)
+The Inventory Table is pre-populated, or seeded, with a list of items and each item is given random sell-in and quality values.
+(The database is seeded in db/seeds.rb and the random sell-in and quality values are generated in the setup method in models/items.rb.)
+
+Each click of the Update button triggers a call to the group_update method defined in app/controllers/items_controller.rb.  The group_update method in turn makes calls to the update_values methods of each of the different items in the table, and saves the updated values to the database.
+
+Each item in the table is based on a class called Item that has four attributes: name, type, quality, and sell-in.
+There's a separate subclass for each type of item that has unique update rules.  All classes are defined in files in the model folder.
 
 To extend this with new inventory items:
 - To add inventory items that don't have special update rules, in db/seeds.rb simply instantiate and save a new Item and assign the name attribute value.  e.g. Item.new(:name = "NewItemName").save!
 - To add an inventory item that *does* have special update rules, define a new subclasses of Item that has an update_values method that reflects the special update rules.  Then in db/seeds.rb instantiate and save that new Item, e.g. NewKindOfItem.new.save!
-
-Each click of the Update button triggers a call to the group_update method defined in app/controllers/items_controller.rb.  The group_update method in turn makes calls to the update_values methods of each of the different items in the table, and saves the updated values to the database.
 
 --------------
 
