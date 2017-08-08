@@ -24,12 +24,12 @@ You'll need to have Ruby on Rails installed and the Gilded Rose repo on your com
 
 To run the app:
 1. From the terminal window navigate to the folder that contains the Gilded Rose repo, then type $rails s
-2. Go to localhost:3000 in your browser
 
-You should see a page with:
-1. INVENTORY TABLE - populated with a list of different items and sell-in and quality values for each item which have been randomly generated.
-2. UPDATE BUTTON - each time you click it, the values in the table will refresh according to the update rules corresponding to the item type.
-3. RELOAD THE TABLE WITH FRESH VALUES BUTTON - when you click it, the table will be populated with new (random) quality and sell-in values.
+2. Go to localhost:3000 in your browser.  You should see a table populated with a list of different items and Sell-In and Quality values for each item which have been randomly generated.
+
+3. Click the Update button to see how the Quality and Sell-in values change over time
+
+4. To refresh the table with new (random) Quality and Sell-in values, click the Reload the Table with Fresh Values button.
 
 --------------
 
@@ -40,14 +40,14 @@ The Inventory Table is pre-populated, or seeded, with a list of items and each i
 
 Each click of the Update button triggers a call to the group_update method defined in app/controllers/items_controller.rb.  The group_update method in turn makes calls to the update_values methods of each of the different items in the table, and saves the updated values to the database.
 
-Each click of the Reload button runs db/seeds.rb which wipes deletes all records in the db and recreates new ones with fresh values.
+Each click of the Reload button runs db/seeds.rb, which deletes all records in the db and recreates new ones with fresh values.
 
 There's a superclass called Item which has four attributes: name, type, quality, and sell-in.
 Item has 4 subclasses - EventItem, ConjuredItem, AgedItem, and LegendaryItem - each with its own set of update rules.  All classes are defined in files in the model folder.
 
 To extend this with new inventory items:
-- To add inventory items that don't have special update rules, in db/seeds.rb simply instantiate and save a new Item and assign the name attribute value.  e.g. Item.new(:name = "NewItemName").save!
-- To add an inventory item that *does* have special update rules, define a new subclasses of Item that has an update_values method that reflects the special update rules.  Then in db/seeds.rb instantiate and save that new Item, e.g. NewKindOfItem.new.save!
+- To add inventory items that don't have special update rules, in db/seeds.rb simply create and save a new Item and assign the name attribute value.  e.g. Item.new(:name = "NewItemName").save!
+- To add an inventory item that *does* have unique update rules, define a new subclasses of Item that has an update_values method that reflects its update rules.  Then in db/seeds.rb create and save that new Item, e.g. NewKindOfItem.new.save!
 
 --------------
 
@@ -62,11 +62,11 @@ For example, the following pages helped me understand ActiveRecord inheritance a
 
 TIME
 
-I spent about 9 hours on this in total.  If I had tracked the inventory info in variables instead of saving them to the db, it may have been simpler to implement (but may not have been as cool!).  It took me time to figure out how to seed the database and to debug a few things related to that, and to debug some other Rails quirks.  
+I spent about 9 hours on this in total.  If I had tracked the inventory info in variables instead of saving them to the db, it may have been simpler to implement and I wouldn't have needed the Reload button on the page.  It took me time to figure out how to seed the database and to debug a few things related to that, and to debug my way around some Rails quirks.
 
-My code is modular and scalable - and I'm looking forward to talking about it and hearing your feedback.
+I think my code is modular and scalable - and I'm looking forward to talking about it and hearing your feedback on how it could be improved.
 
 With more time, I would:
 1. Write unit tests.  I've created Fixtures (in the test/fixtures folder) for each type of item, with different sets of quality/sell-in values to test the various parts of the update logic.  I just need to write the actual tests to run through each of them and check the output.
-2. It might be possible to make the code even more scalable by abstracting out the defining distinction of each subclass as a separate subclass layer.
+2. It might be possible to make the code even more scalable by abstracting out the defining quality of each subclass as a separate subclass layer.
 For example, could there be other items besides Legendary Items which don't need to be sold and whose value never degrades?  If yes then it might make sense to have an Item subclass called FixedValuesItem and have LegendaryItem be a subclass of that.
