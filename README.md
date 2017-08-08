@@ -23,16 +23,13 @@ RUNNING THE APP
 You'll need to have Ruby on Rails installed and the Gilded Rose repo on your computer.
 
 To run the app:
-1. From the terminal window navigate to the folder that contains the Gilded Rose repo
-2. Run the following at the command line:
-   $rake db:seed
-   $rails s
-3. Go to localhost:3000 in your browser.
+1. From the terminal window navigate to the folder that contains the Gilded Rose repo, then type $rails s
+2. Go to localhost:3000 in your browser
 
-You should see a page with an Inventory Table populated with items, and an Update button.  Each time you click the Update button, the values in the table will refresh according to the update rules of each item type.
-
-To refresh the page and get a fresh set of values, rerun $rake db:seed and then reload localhost:3000.
-(Each time $rake db:seed is run, the database gets wiped clean and new instances of the items are created with new quality and sell-in values.)
+You should see a page with:
+1. An Inventory Table populated with a list of different items and sell-in and quality values for each item which have been randomly generated.
+2. An Update button.  Each time you click it, the values in the table will refresh according to the update rules corresponding to the item type.
+3. A button labelled "Reload the App with Fresh Values".  When you click it, the table will be populated with new (random) quality and sell-in values.
 
 --------------
 
@@ -68,7 +65,6 @@ I spent about 9 hours on this in total.  If I had tracked the inventory info in 
 My code is modular and scalable - and I'm looking forward to talking about it and hearing your feedback.
 
 With more time, I would:
-1. Figure out how to load the database seeds programmatically, so the user no longer needs to run $rails db:seed.
-2. Write unit tests.  I've created Fixtures (in the test/fixtures folder) for each type of item, with different sets of quality/sell-in values to test the various parts of the update logic.  I just need to write the actual tests to run through each of them and check the output.
-3. It might be possible to make the code even more scalable by abstracting out the defining distinction of each subclass as a separate subclass layer.
+1. Write unit tests.  I've created Fixtures (in the test/fixtures folder) for each type of item, with different sets of quality/sell-in values to test the various parts of the update logic.  I just need to write the actual tests to run through each of them and check the output.
+2. It might be possible to make the code even more scalable by abstracting out the defining distinction of each subclass as a separate subclass layer.
 For example, could there be other items besides Legendary Items which don't need to be sold and whose value never degrades?  If yes then it might make sense to have an Item subclass called FixedValuesItem and have LegendaryItem be a subclass of that.

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :items do
   	post :group_update, on: :collection
+  	post :group_regenerate, on: :collection
   end
 
   root 'items#index'

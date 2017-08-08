@@ -4,6 +4,13 @@ class ItemsController < ApplicationController
 		@items = Item.all
 	end
 
+	def group_regenerate
+		Rails.application.load_seed
+	
+		@items = Item.all
+		render 'index'
+	end
+
 	def group_update
 		@items = Item.all
 		if(@items)
