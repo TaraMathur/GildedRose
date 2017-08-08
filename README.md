@@ -53,6 +53,7 @@ To extend this with new inventory items:
 --------------
 
 DOCUMENTATION USED
+
 I chose to build this in Rails because it's the framework I'm most familiar with.  I mainly referred to online Ruby on Rails reference guides and StackOverflow for help debugging some issues I ran into hooking everything into Rails.
 For example, the following pages helped me understand ActiveRecord inheritance and figure out how to initialize class values, respectively:
 - http://api.rubyonrails.org/classes/ActiveRecord/Inheritance.html
@@ -61,6 +62,7 @@ For example, the following pages helped me understand ActiveRecord inheritance a
 --------------
 
 TIME
+
 I spent about 9 hours on this in total.  If I had tracked the inventory info in variables instead of saving them to the db, it may have been simpler to implement (but may not have been as cool!).  It took me time to figure out how to seed the database and to debug a few things related to that, and to debug some other Rails quirks.  
 
 My code is modular and scalable - and I'm looking forward to talking about it and hearing your feedback.

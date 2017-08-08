@@ -6,8 +6,8 @@ class Item < ApplicationRecord
   		if !self.name
   			self.name = "Item"
   		end
-  		self.quality = rand(1...50)
-  		self.sellin = rand(1...45)
+  		self.quality = rand(1...49)
+  		self.sellin = rand(1...30)
   	end
   end
 
