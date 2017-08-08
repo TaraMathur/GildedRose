@@ -27,12 +27,9 @@ To run the app:
 2. Go to localhost:3000 in your browser
 
 You should see a page with:
-1. An Inventory Table populated with a list of different items and sell-in and quality values for each item which have been randomly generated.
-2. An Update button.  Each time you click it, the values in the table will refresh according to the update rules corresponding to the item type.
-
-To refresh the table with new random values, type $rails db:seed at the command line and then reload localhost:3000.
-
-[This is currently hidden --> 3. A button labelled "Reload the Table with Fresh Values".  When you click it, the table will be populated with new (random) quality and sell-in values.]
+1. INVENTORY TABLE - populated with a list of different items and sell-in and quality values for each item which have been randomly generated.
+2. UPDATE BUTTON - each time you click it, the values in the table will refresh according to the update rules corresponding to the item type.
+3. RELOAD THE TABLE WITH FRESH VALUES BUTTON - when you click it, the table will be populated with new (random) quality and sell-in values.
 
 --------------
 
@@ -42,6 +39,8 @@ The Inventory Table is pre-populated, or seeded, with a list of items and each i
 (The database is seeded in db/seeds.rb and the random sell-in and quality values are generated in the setup method in models/items.rb.)
 
 Each click of the Update button triggers a call to the group_update method defined in app/controllers/items_controller.rb.  The group_update method in turn makes calls to the update_values methods of each of the different items in the table, and saves the updated values to the database.
+
+Each click of the Reload button runs db/seeds.rb which wipes deletes all records in the db and recreates new ones with fresh values.
 
 There's a superclass called Item which has four attributes: name, type, quality, and sell-in.
 Item has 4 subclasses - EventItem, ConjuredItem, AgedItem, and LegendaryItem - each with its own set of update rules.  All classes are defined in files in the model folder.
