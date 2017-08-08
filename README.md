@@ -2,6 +2,8 @@
 
 ITEM UPDATE RULES
 
+All inventory items have "sell-in" values which denote the number of days we have left to sell them and a quality value that denotes their worth.
+
 For most items:
 - The quality degrades by one per day.
 - The quality drops twice as fast once the sell in value reaches 0.
