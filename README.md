@@ -43,8 +43,8 @@ The Inventory Table is pre-populated, or seeded, with a list of items and each i
 
 Each click of the Update button triggers a call to the group_update method defined in app/controllers/items_controller.rb.  The group_update method in turn makes calls to the update_values methods of each of the different items in the table, and saves the updated values to the database.
 
-Each item in the table is based on a class called Item that has four attributes: name, type, quality, and sell-in.
-There's a separate subclass for each type of item that has unique update rules.  All classes are defined in files in the model folder.
+There's a superclass called Item which has four attributes: name, type, quality, and sell-in.
+Item has 4 subclasses - EventItem, ConjuredItem, AgedItem, and LegendaryItem - each with its own set of update rules.  All classes are defined in files in the model folder.
 
 To extend this with new inventory items:
 - To add inventory items that don't have special update rules, in db/seeds.rb simply instantiate and save a new Item and assign the name attribute value.  e.g. Item.new(:name = "NewItemName").save!
@@ -70,6 +70,5 @@ My code is modular and scalable - and I'm looking forward to talking about it an
 With more time, I would:
 1. Figure out how to load the database seeds programmatically, so the user no longer needs to run $rails db:seed.
 2. Write unit tests.  I've created Fixtures (in the test/fixtures folder) for each type of item, with different sets of quality/sell-in values to test the various parts of the update logic.  I just need to write the actual tests to run through each of them and check the output.
-3. Right now a ConjuredItem object can't be instantiated without specifying a name, e.g. ConjuredItem.new("Conjured Shield") works but ConjuredItem.new doesn't.  Ideally there should be a default name.  If I had more time I'd fix this.
-
-
+3. It might be possible to make the code even more scalable by abstracting out the defining distinction of each subclass as a separate subclass layer.
+For example, could there be other items besides Legendary Items which don't need to be sold and whose value never degrades?  If yes then it might make sense to have an Item subclass called FixedValuesItem and have LegendaryItem be a subclass of that.

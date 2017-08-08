@@ -3,8 +3,8 @@
 
 Item.delete_all
 
-Brie.new.save!
+AgedItem.new(name: "Aged Brie").save!
 LegendaryItem.new(name:"Sulfurus Sword").save
-BackstagePass.new.save!
+EventItem.new(name: "Backstage Pass").save!
 ConjuredItem.new(name: "Conjured Shield").save!
 Item.new(name: "Regular Shield").save!

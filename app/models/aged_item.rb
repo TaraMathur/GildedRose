@@ -1,6 +1,6 @@
-class Brie < Item
-  def initialize
-    super(name: "Aged Brie")
+class AgedItem < Item
+  def initialize(name)
+    super(name)
     self.sellin = 999
   end
  

@@ -1,7 +1,7 @@
-class BackstagePass < Item
+class EventItem < Item
 
-    def initialize
-      super(name: "BackStage Pass")
+    def initialize(name)
+      super(name)
     end
   
     def update_values
