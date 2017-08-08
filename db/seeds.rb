@@ -8,3 +8,4 @@ SulfarusSword.new.save!
 BackstagePass.new.save!
 ConjuredItem.new(name: "Conjured Shield").save!
 Item.new(name: "Regular Shield").save!
+#ConjuredItem.new.save!

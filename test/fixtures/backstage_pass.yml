@@ -1,24 +1,24 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# for making sure quality increments by 3 when sellin is <= 5
+# Tests that quality increments by 3 when sellin is <= 5
 one:
   name: Backstage Pass
   quality: 50
   sellin: 5
 
-# for making sure quality is set to 0 when sellin is 0.  also checks to make sure sellin never decreases past 0.
+# Tests that quality is set to 0 when sellin is 0.  Also checks to make sure sellin never decreases past 0.
 two:
   name: Backstage Pass
   quality: 40
   sellin: 1
 
-# for making sure quality increments by 3 when sellin is <= 10
+# Tests that quality increments by 3 when sellin is <= 10
 three:
   name: Backstage Pass
   quality: 9
   sellin: 5
 
-# for making sure quality increments by 1 when sellin is > 10
+# Tests that quality increments by 1 when sellin is > 10
 four:
   name: Backstage Pass
   quality: 20

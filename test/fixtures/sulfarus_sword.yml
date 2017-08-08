@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# checks to make sure that quality and sellin never change
+# Tests that quality and sellin never change
 one:
   name: Sulfarus the Legendary Sword
   quality: 10
   sellin: 5
 
-# checks to make sure that quality and sellin never change
+# Tests that quality and sellin never change
 two:
   name: Sulfarus the Legendary Sword
   quality: 40
