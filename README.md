@@ -29,7 +29,10 @@ To run the app:
 You should see a page with:
 1. An Inventory Table populated with a list of different items and sell-in and quality values for each item which have been randomly generated.
 2. An Update button.  Each time you click it, the values in the table will refresh according to the update rules corresponding to the item type.
-3. A button labelled "Reload the Table with Fresh Values".  When you click it, the table will be populated with new (random) quality and sell-in values.
+
+To refresh the table with new random values, type $rails db:seed at the command line and then reload localhost:3000.
+
+[This is currently hidden --> 3. A button labelled "Reload the Table with Fresh Values".  When you click it, the table will be populated with new (random) quality and sell-in values.]
 
 --------------
 
