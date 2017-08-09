@@ -29,7 +29,7 @@ To run the app:
 
 3. Click the Update button to see how the Quality and Sell-in values change over time
 
-4. To refresh the table with new (random) Quality and Sell-in values, click the Reload the Table with Fresh Values button.
+4. To refresh the table with new (random) Quality and Sell-in values, click the Start Fresh button.
 
 --------------
 
