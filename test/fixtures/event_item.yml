@@ -2,24 +2,24 @@
 
 # Tests that quality increments by 3 when sellin is <= 5
 one:
-  name: Backstage Pass
+  name: Event Item
   quality: 50
   sellin: 5
 
 # Tests that quality is set to 0 when sellin is 0.  Also checks to make sure sellin never decreases past 0.
 two:
-  name: Backstage Pass
+  name: Event Item
   quality: 40
   sellin: 1
 
 # Tests that quality increments by 3 when sellin is <= 10
 three:
-  name: Backstage Pass
+  name: Event Item
   quality: 9
   sellin: 5
 
 # Tests that quality increments by 1 when sellin is > 10
 four:
-  name: Backstage Pass
+  name: Event Item
   quality: 20
   sellin: 12

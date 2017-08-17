@@ -1,14 +1,8 @@
 class Item < ApplicationRecord
-	after_initialize :setup
-
-  def setup
-  	if !self.quality
-  		if !self.name
-  			self.name = "Item"
-  		end
-  		self.quality = rand(1...49)
-  		self.sellin = rand(1...30)
-  	end
+  def initialize(name)
+    super(name)
+  	self.quality = rand(10...49)
+  	self.sellin = rand(10...30)
   end
 
   def update_values
@@ -22,15 +16,18 @@ class Item < ApplicationRecord
   end
 
 def enforce_boundaries
-    if (self.quality < 0 )
-      self.quality = 0
+
+    if (!self.quality.nil?)
+      if (self.quality < 0 )
+        self.quality = 0
+      end
+
+      if (self.quality > 50)
+        self.quality = 50
+      end
     end
 
-    if (self.quality > 50)
-      self.quality = 50
-    end
-
-    if (self.sellin < 0 )
+    if (!self.sellin.nil? && self.sellin < 0 )
       self.sellin = 0
     end
  end

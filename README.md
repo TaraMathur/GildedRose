@@ -2,7 +2,7 @@
 
 ITEM UPDATE RULES
 
-All inventory items have "sell-in" values which denote the number of days we have left to sell them and a quality value that denotes their worth.
+All inventory items have sell-in values which denote the number of days we have left to sell them and a quality value that denotes their worth.
 
 For most items:
 - The quality degrades by one per day.
@@ -29,25 +29,33 @@ To run the app:
 
 3. Click the Update button to see how the Quality and Sell-in values change over time
 
-4. To refresh the table with new (random) Quality and Sell-in values, click the Start Fresh button.
+4. To refresh the table with new (random) Quality and Sell-in values, click the Start Over button.
 
 --------------
 
 HOW IT WORKS
 
-The Inventory Table is pre-populated, or seeded, with a list of items and each item is given random sell-in and quality values.
-(The database is seeded in db/seeds.rb and the random sell-in and quality values are generated in the setup method in models/items.rb.)
+The schema has four fields: name, sellin, quality, and type.
 
-Each click of the Update button triggers a call to the group_update method defined in app/controllers/items_controller.rb.  The group_update method in turn makes calls to the update_values methods of each of the different items in the table, and saves the updated values to the database.
+There's a main model called Item which has 3 methods: 
+- initialize, which initializes each Item with a name and random sellin and quality values
+- update_values, updates the sellin and quality values
+- enforce boundaries, which ensures that the sellin and quality values are never negative or over 50
 
-Each click of the Reload button runs db/seeds.rb, which deletes all records in the db and recreates new ones with fresh values.
+Item has four sub-classes: EventItem, ConjuredItem, AgedItem, and LegendaryItem - each with a unique set of update rules.
 
-There's a superclass called Item which has four attributes: name, type, quality, and sell-in.
-Item has 4 subclasses - EventItem, ConjuredItem, AgedItem, and LegendaryItem - each with its own set of update rules.  All classes are defined in files in the model folder.
+Aged Brie is an AgedItem object, Sulfarus Sword is a LegendaryItem, BackstagePass is an EventItem, and Conjured Shield is a ConjuredItem, and Regular Shield is just a regular Item.
+
+The controller has 3 methods: 
+- index, lists the items in the table
+- group_update (tied to the Update button), calls the update_values method of each object in the table
+- group_reload (tied to the Start Over button), loads fresh random data into the table
+
+The Inventory Table is seeded with a list of items in db/seeds.rb.
 
 To extend this with new inventory items:
-- To add inventory items that don't have special update rules, in db/seeds.rb simply create and save a new Item and assign the name attribute value.  e.g. Item.new(:name = "NewItemName").save!
-- To add an inventory item that *does* have unique update rules, define a new subclasses of Item that has an update_values method that reflects its update rules.  Then in db/seeds.rb create and save that new Item, e.g. NewKindOfItem.new.save!
+- For regular inventory items, nothing is needed.  You'd simply create a new Item object with its name, e.g. Item.new(:name = "NewItemName").save!
+- For new items that have special update rules, create a new model - a subclasses of Item with its own update_values method that reflects its update rules.
 
 --------------
 
@@ -62,11 +70,11 @@ For example, the following pages helped me understand ActiveRecord inheritance a
 
 TIME
 
-I spent about 9 hours on this in total.  If I had tracked the inventory info in variables instead of saving them to the db, it may have been simpler to implement and I wouldn't have needed the Reload button on the page.  It took me time to figure out how to seed the database and to debug a few things related to that, and to debug my way around some Rails quirks.
+I spent about 9 hours on this in total.  If I had tracked the inventory info in variables instead of saving them to the db, it may have been simpler to implement (and I wouldn't have needed the Reload button on the page).  It took me time to figure out how to seed the database and to debug a few things related to that, and to debug my way around some Rails quirks.
 
 I think my code is modular and scalable - and I'm looking forward to talking about it and hearing your feedback on how it could be improved.
 
 With more time, I would:
-1. Write unit tests.  I've created Fixtures (in the test/fixtures folder) for each type of item, with different sets of quality/sell-in values to test the various parts of the update logic.  I just need to write the actual tests to run through each of them and check the output.
+1. Write unit tests.  I've created Fixtures (in the test/fixtures folder) for each model, with different sets of quality/sell-in values to test the various parts of the update logic.  I just need to write the actual tests to run through each of them and check the output according to the update logic.  I'd also write a test for the buttons to make sure they change the values in the table.
 2. It might be possible to make the code even more scalable by abstracting out the defining quality of each subclass as a separate subclass layer.
 For example, could there be other items besides Legendary Items which don't need to be sold and whose value never degrades?  If yes then it might make sense to have an Item subclass called FixedValuesItem and have LegendaryItem be a subclass of that.

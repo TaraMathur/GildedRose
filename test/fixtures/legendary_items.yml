@@ -2,12 +2,12 @@
 
 # Tests that quality and sellin never change
 one:
-  name: Sulfarus the Legendary Sword
+  name: Legendary Item
   quality: 10
   sellin: 5
 
 # Tests that quality and sellin never change
 two:
-  name: Sulfarus the Legendary Sword
+  name: Legendary Item
   quality: 40
   sellin: 0

@@ -2,18 +2,18 @@
 
 # Tests that quality doesn't increase past 50
 one:
-  name: Aged Brie
+  name: Aged Item
   quality: 50
   sellin: 5
 
 # Tests that quality is set to 0 when sellin is 0.  Also checks to make sure sellin never decreases past 0.
 two:
-  name: Aged Brie
+  name: Aged Item
   quality: 40
   sellin: 0
 
 # Tests that quality increases as sellin decreases
 three:
-  name: Aged Brie
+  name: Aged Item
   quality: 20
   sellin: 5

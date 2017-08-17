@@ -2,12 +2,12 @@
 
 # Tests that quality decrements by 2 as sellin decreases
 one:
-  name: Regular Shield
+  name: Conjured Item
   quality: 10
   sellin: 5
 
 # Tests that quality decrements by 4 when sellin is 0
 two:
-  name: New Item
+  name: Conjured Item
   quality: 40
   sellin: 1
