@@ -38,11 +38,11 @@ HOW IT WORKS
 The schema has four fields: name, sellin, quality, and type.
 
 There's a main model called Item which has 3 methods: 
-- initialize, which initializes each Item with a name and random sellin and quality values
+- initialize, which initializes each Item with a name and random sellin and quality value
 - update_values, updates the sellin and quality values
 - enforce boundaries, which ensures that the sellin and quality values are never negative or over 50
 
-Item has four sub-classes: EventItem, ConjuredItem, AgedItem, and LegendaryItem - each with a unique set of update rules.
+Item has four sub-classes: EventItem, ConjuredItem, AgedItem, and LegendaryItem - each with its own update_values method that reflects each's unique set of update rules.  The AgedItem and LegendaryItem subclasses also each have their own initialize method.
 
 Aged Brie is an AgedItem object, Sulfarus Sword is a LegendaryItem, BackstagePass is an EventItem, and Conjured Shield is a ConjuredItem, and Regular Shield is just a regular Item.
 

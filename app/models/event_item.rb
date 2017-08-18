@@ -1,9 +1,5 @@
 class EventItem < Item
 
-    def initialize(name)
-      super(name)
-    end
-  
     def update_values
       self.sellin = self.sellin - 1
 
