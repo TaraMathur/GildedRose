@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   def initialize(name)
-    super(name)
+    super
   	self.quality = rand(10...49)
   	self.sellin = rand(10...30)
   end
@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 	    else
 	      self.quality = self.quality - 1
 	    end
-	    self.sellin = self.sellin - 1
+      self.sellin = self.sellin - 1
 	    enforce_boundaries
   end
 
